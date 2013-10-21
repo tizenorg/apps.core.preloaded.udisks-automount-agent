@@ -1,0 +1,10 @@
+[Unit]
+Description=Udisks user session automount/umount agent
+
+[Service]
+ExecStart=@udisksagentbindir@/udisks-automount-agent
+Type=simple
+Restart=always
+RestartSec=1
+Requires=udisks2.service
+Requires=org.freedesktop.PlicyKit1.service

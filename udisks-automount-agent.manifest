@@ -1,0 +1,8 @@
+<manifest>
+	<define>
+		<domain name="com.samsung.udisks-automount-agent"/>
+	</define>
+	<request>
+		<domain name="com.samsung.udisks-automount-agent"/>
+	</request>
+</manifest>

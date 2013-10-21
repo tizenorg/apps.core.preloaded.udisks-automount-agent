@@ -1,0 +1,6 @@
+udisk-automount-agent (0.0.1) unstable; urgency=low 
+
+  * Udisks automount sample agnet
+
+ -- Dongyeol <j.pielaszkie@samsung.com>  Tue, 01 Oct 2013
+ 
