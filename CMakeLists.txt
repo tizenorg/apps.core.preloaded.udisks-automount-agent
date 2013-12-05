@@ -3,7 +3,7 @@ PROJECT(udisks-automount-agent)
 
 SET(PREFIX ${CMAKE_INSTALL_PREFIX})
 SET(EXEC_PREFIX "${PREFIX}")
-SET(BINDIR "/usr/local/bin")
+SET(BINDIR "/usr/bin")
 SET(SYSTEMDDIR "/usr/lib/systemd")
 SET(POLKITRULESDIR "/etc/polkit-1/localauthority/10-vendor.d")
 
@@ -40,5 +40,5 @@ ADD_DEFINITIONS("-DPREFIX=\"${CMAKE_INSTALL_PREFIX}\"")
 
 # Install 
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ${BINDIR})
-INSTALL(FILES udisks-automount-agent.service DESTINATION ${SYSTEMDDIR}/user)
+INSTALL(FILES udisks-automount-agent.service DESTINATION ${SYSTEMDDIR}/system)
 INSTALL(FILES data/10-udisks.pkla DESTINATION ${POLKITRULESDIR})

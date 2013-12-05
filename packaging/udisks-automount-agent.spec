@@ -1,3 +1,4 @@
+%bcond_with ivi
 Name:       udisks-automount-agent
 Summary:    Udisk automount agent
 Version:    0.1.0
@@ -28,14 +29,23 @@ make %{?jobs:-j%jobs}
 %install
 rm -rf %{buildroot}
 %make_install
-mkdir -p %{buildroot}%{_prefix}/lib/systemd/user/core-efl.target.wants/
-ln -s ../udisks-automount-agent.service %{buildroot}/usr/lib/systemd/user/core-efl.target.wants/udisks-automount-agent.service
+%if %{with ivi}
+%install_service graphical.target.wants udisks-automount-agent.service
+%else
+mkdir -p %{buildroot}%{_prefix}/lib/systemd/system/core-efl.target.wants/
+ln -s ../udisks-automount-agent.service %{buildroot}/usr/lib/systemd/system/core-efl.target.wants/udisks-automount-agent.service
+%endif
 
 %post
 
 %files
-%{_prefix}/local/bin/udisks-automount-agent
-%{_prefix}/lib/systemd/user/udisks-automount-agent.service
-%{_prefix}/lib/systemd/user/core-efl.target.wants/udisks-automount-agent.service
+%{_prefix}/bin/udisks-automount-agent
+%if %{with ivi}
+%{_unitdir}/graphical.target.wants/udisks-automount-agent.service
+%{_unitdir}/udisks-automount-agent.service
+%else
+%{_prefix}/lib/systemd/system/udisks-automount-agent.service
+%{_prefix}/lib/systemd/system/core-efl.target.wants/udisks-automount-agent.service
+%endif
 %{_sysconfdir}/polkit-1/localauthority/10-vendor.d/10-udisks.pkla
 %license LICENSE

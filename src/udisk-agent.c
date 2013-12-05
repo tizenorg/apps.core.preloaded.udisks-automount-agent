@@ -176,7 +176,7 @@ static void automount_on_object_added(GDBusObjectManager  *manager, GDBusObject 
 	}
 	else
 	{
-		g_printerr( "Mount error, domain = %d, error code = %d\n", error -> domain, error -> code);
+		g_printerr( "Mount error, domain = %d, error code = %d, msg = %s\n", error -> domain, error -> code, error->message);
 	}
 
 	if (error != (GError *)NULL)
