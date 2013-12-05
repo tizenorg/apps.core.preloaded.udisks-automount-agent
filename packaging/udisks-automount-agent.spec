@@ -1,3 +1,4 @@
+%bcond_with ivi
 Name:       udisks-automount-agent
 Summary:    Udisk automount agent
 Version:    0.1.0
@@ -18,9 +19,15 @@ Requires:      udisks
 %description
 TIZEN udisks automount sample agent.  
 
+%if %{with ivi}
+%define _target_name weston
+%else
+%define _target_name core-efl
+%endif
+
 %prep
 %setup -q
-cmake . -DCMAKE_INSTALL_PREFIX=%{_prefix} 
+cmake . -DCMAKE_INSTALL_PREFIX=%{_prefix} -DSYSTEMD_SERVICE_DIR=%{_unitdir_user} 
 
 %build
 make %{?jobs:-j%jobs}
@@ -28,14 +35,14 @@ make %{?jobs:-j%jobs}
 %install
 rm -rf %{buildroot}
 %make_install
-mkdir -p %{buildroot}%{_prefix}/lib/systemd/user/core-efl.target.wants/
-ln -s ../udisks-automount-agent.service %{buildroot}/usr/lib/systemd/user/core-efl.target.wants/udisks-automount-agent.service
+mkdir -p %{buildroot}%{_unitdir_user}/%{_target_name}.target.wants/
+ln -s ../udisks-automount-agent.service %{buildroot}%{_unitdir_user}/%{_target_name}.target.wants/udisks-automount-agent.service
 
 %post
 
 %files
-%{_prefix}/local/bin/udisks-automount-agent
-%{_prefix}/lib/systemd/user/udisks-automount-agent.service
-%{_prefix}/lib/systemd/user/core-efl.target.wants/udisks-automount-agent.service
+%{_prefix}/bin/udisks-automount-agent
+%{_unitdir_user}/udisks-automount-agent.service
+%{_unitdir_user}/%{_target_name}.target.wants/udisks-automount-agent.service
 %{_sysconfdir}/polkit-1/localauthority/10-vendor.d/10-udisks.pkla
 %license LICENSE
