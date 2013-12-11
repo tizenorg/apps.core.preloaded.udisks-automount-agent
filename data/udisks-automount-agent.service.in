@@ -1,10 +1,10 @@
 [Unit]
 Description=Udisks user session automount/umount agent
+Requires=udisks2.service
+Requires=org.freedesktop.PolicyKit1.service
 
 [Service]
 Type=simple
+ExecStart=@udisksagentbindir@/udisks-automount-agent
 Restart=always
 RestartSec=1
-ExecStart=@udisksagentbindir@/udisks-automount-agent
-Requires=udisks2.service
-Requires=org.freedesktop.PolicyKit1.service
