@@ -6,6 +6,7 @@ Release:    1
 Group:      Base/Device Management
 License:    GPL-2.0
 Source0:    %{name}-%{version}.tar.gz
+Source1:    %{name}.manifest
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(udisks2)
 BuildRequires: pkgconfig(gio-2.0)
@@ -17,7 +18,8 @@ Requires:      glib2
 Requires:      udisks
 
 %description
-TIZEN udisks automount sample agent.  
+TIZEN udisks automount agent.  
+
 
 %if %{with ivi}
 %define _target_name weston
@@ -25,22 +27,31 @@ TIZEN udisks automount sample agent.
 %define _target_name core-efl
 %endif
 
+
 %prep
 %setup -q
 cmake . -DCMAKE_INSTALL_PREFIX=%{_prefix} -DSYSTEMD_SERVICE_DIR=%{_unitdir_user} 
 
+
 %build
 make %{?jobs:-j%jobs}
+
 
 %install
 rm -rf %{buildroot}
 %make_install
 mkdir -p %{buildroot}%{_unitdir_user}/%{_target_name}.target.wants/
 ln -s ../udisks-automount-agent.service %{buildroot}%{_unitdir_user}/%{_target_name}.target.wants/udisks-automount-agent.service
+mkdir -p %{buildroot}%{_datadir}
+cp -a %{SOURCE1} %{buildroot}%{_datadir}/%{name}.manifest
+
 
 %post
 
+
 %files
+%defattr(-,root,root,-)
+%manifest %{_datadir}/%{name}.manifest
 %{_prefix}/bin/udisks-automount-agent
 %{_unitdir_user}/udisks-automount-agent.service
 %{_unitdir_user}/%{_target_name}.target.wants/udisks-automount-agent.service
