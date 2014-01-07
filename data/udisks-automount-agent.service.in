@@ -1,7 +1,5 @@
 [Unit]
 Description=Udisks user session automount/umount agent
-Requires=udisks2.service
-Requires=org.freedesktop.PolicyKit1.service
 
 [Service]
 Type=simple

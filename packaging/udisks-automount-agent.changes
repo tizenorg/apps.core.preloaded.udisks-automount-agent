@@ -1,3 +1,6 @@
+* Tue Jan 07 2014 Imran Zaman <imran.zaman@intel.com>
+- Removed unnecessary Requires flag and updated manifest file
+
 * Fri Dec 13 2013 Mikko Ylinen <mikko.ylinen@intel.com> accepted/tizen/20131206.003821@cc456e9
 - Fix 'Requires' field usage
 - Prepare agent for Tizen IVI
