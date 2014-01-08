@@ -1,3 +1,7 @@
+* Tue Jan 08 2014 Imran Zaman <imran.zaman@intel.com>
+- Added sample mount listener
+- Notifications support
+
 * Tue Jan 07 2014 Imran Zaman <imran.zaman@intel.com>
 - Removed unnecessary Requires flag and updated manifest file
 

@@ -80,3 +80,4 @@ cp -a %{SOURCE1} %{buildroot}%{_datadir}/%{name}.manifest
 %files devel
 %defattr(-,root,root,-)
 %{_bindir}/sample-udisks-agent-notif-listener
+%{_bindir}/sample-udisks-agent-mount-listener
