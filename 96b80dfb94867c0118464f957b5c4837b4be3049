@@ -1,0 +1,10 @@
+Code-Review+2: Casey Schaufler <casey.schaufler@intel.com>
+Code-Review+1: Patrick McCarty <patrick.mccarty@linux.intel.com>
+Verified+1: Imran Zaman
+Code-Review+1: Michael Demeter <michael.demeter@intel.com>
+Code-Review+1: Jacek Pielaszkiewicz <j.pielaszkie@samsung.com>
+Submitted-by: Mikko Ylinen <mikko.ylinen@intel.com>
+Submitted-at: Thu, 09 Jan 2014 06:26:26 -0800
+Reviewed-on: https://review.tizen.org/gerrit/14553
+Project: apps/core/preloaded/udisks-automount-agent
+Branch: refs/heads/tizen
