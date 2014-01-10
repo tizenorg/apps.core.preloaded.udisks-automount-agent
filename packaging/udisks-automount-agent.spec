@@ -1,4 +1,7 @@
 %bcond_with ivi
+# enable or disable notifications for mount/umount events
+%define enable_notifications 0
+
 Name:       udisks-automount-agent
 Summary:    Udisk automount agent
 Version:    0.1.0
@@ -14,11 +17,27 @@ BuildRequires: udisks-devel
 BuildRequires: cmake
 BuildRequires: linux-kernel-headers
 
+BuildRequires: pkgconfig(notification)
+BuildRequires: pkgconfig(eina)
+BuildRequires: pkgconfig(ecore)
+BuildRequires: bundle-devel
+
+
 Requires:      glib2
 Requires:      udisks
 
 %description
 TIZEN udisks automount agent.
+
+
+%package devel
+Summary:    Development files for udisks-automount-agent
+Group:      Development/Libraries
+Requires:   %{name} = %{version}-%{release}
+
+
+%description devel
+%{summary}.
 
 
 %if %{with ivi}
@@ -31,7 +50,8 @@ TIZEN udisks automount agent.
 %prep
 %setup -q
 cp -a %{SOURCE1} .
-cmake . -DCMAKE_INSTALL_PREFIX=%{_prefix} -DSYSTEMD_SERVICE_DIR=%{_unitdir_user} 
+cmake . -DCMAKE_INSTALL_PREFIX=%{_prefix} -DSYSTEMD_SERVICE_DIR=%{_unitdir_user} -DENABLE_NOTIF=%{enable_notifications}
+
 
 
 %build
@@ -56,3 +76,10 @@ ln -s ../udisks-automount-agent.service %{buildroot}%{_unitdir_user}/%{_target_n
 %{_unitdir_user}/%{_target_name}.target.wants/udisks-automount-agent.service
 %{_sysconfdir}/polkit-1/localauthority/10-vendor.d/10-udisks.pkla
 %license LICENSE
+
+
+%files devel
+%defattr(-,root,root,-)
+%{_bindir}/sample-udisks-agent-notif-listener
+%{_bindir}/sample-udisks-agent-mount-listener
+
