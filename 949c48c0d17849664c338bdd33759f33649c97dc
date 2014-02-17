@@ -1,0 +1,8 @@
+Verified+1: Imran Zaman
+Code-Review+2: Mikko Ylinen <mikko.ylinen@intel.com>
+Code-Review+1: Jacek Pielaszkiewicz <j.pielaszkie@samsung.com>
+Submitted-by: Mikko Ylinen <mikko.ylinen@intel.com>
+Submitted-at: Mon, 17 Feb 2014 04:04:36 -0800
+Reviewed-on: https://review.tizen.org/gerrit/14718
+Project: apps/core/preloaded/udisks-automount-agent
+Branch: refs/heads/tizen
