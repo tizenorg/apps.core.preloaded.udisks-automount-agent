@@ -1,4 +1,7 @@
-* Tue Jan 08 2014 Imran Zaman <imran.zaman@intel.com>
+* Tue Oct 07 2014 John L. Whiteman <john.l.whiteman@intel.com> submit/tizen_ivi_release/20140317.182225-1-g338fd37
+- Use systemd to start udisks-automount-agent
+
+* Wed Jan 08 2014 Imran Zaman <imran.zaman@intel.com> None
 - Notifications support and sample listeners
 
 * Tue Jan 07 2014 Imran Zaman <imran.zaman@intel.com>

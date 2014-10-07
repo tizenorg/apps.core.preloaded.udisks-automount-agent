@@ -14,17 +14,12 @@ SET(CMAKE_VERBOSE_MAKEFILE off)
 
 SET(SRCS src/udisk-agent.c)
 
-SET(SYSTEMD_SERVICE	data/udisks-automount-agent.service.in)
-
 INCLUDE(FindPkgConfig)
 pkg_check_modules(pkgs REQUIRED glib-2.0 gio-2.0 gio-unix-2.0 udisks2 eina ecore notification)
 
 FOREACH(flag ${pkgs_CFLAGS})
 	SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} ${flag}")
 ENDFOREACH(flag)
-
-# Build udisks-automount-agent.service file
-EXECUTE_PROCESS( COMMAND /bin/sed -e "s|\@udisksagentbindir\@|${BINDIR}|" INPUT_FILE ${SYSTEMD_SERVICE} OUTPUT_FILE udisks-automount-agent.service ) 
 
 # Executables
 ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS} )
@@ -41,7 +36,6 @@ ADD_DEFINITIONS("-DENABLE_NOTIF=${ENABLE_NOTIF}")
 
 # Install 
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ${BINDIR})
-INSTALL(FILES udisks-automount-agent.service DESTINATION ${SYSTEMDDIR})
 INSTALL(FILES data/10-udisks.pkla DESTINATION ${POLKITRULESDIR})
 
 ADD_SUBDIRECTORY(examples)
