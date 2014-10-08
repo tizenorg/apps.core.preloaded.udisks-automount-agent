@@ -1,0 +1,8 @@
+Code-Review+2: Casey Schaufler <casey.schaufler@intel.com>
+Code-Review+1: John Whiteman <john.l.whiteman@intel.com>
+Verified+1: John Whiteman <john.l.whiteman@intel.com>
+Submitted-by: Casey Schaufler <casey.schaufler@intel.com>
+Submitted-at: Wed, 08 Oct 2014 16:24:50 -0700
+Reviewed-on: https://review.tizen.org/gerrit/28525
+Project: apps/core/preloaded/udisks-automount-agent
+Branch: refs/heads/tizen
