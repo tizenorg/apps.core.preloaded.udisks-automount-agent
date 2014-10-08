@@ -75,6 +75,7 @@ ln -s ../udisks-automount-agent.service %{buildroot}%{_unitdir_user}/%{_target_n
 %{_unitdir_user}/udisks-automount-agent.service
 %{_unitdir_user}/%{_target_name}.target.wants/udisks-automount-agent.service
 %{_sysconfdir}/polkit-1/localauthority/10-vendor.d/10-udisks.pkla
+%{_sysconfdir}/polkit-1/rules.d/10-udisks.rules
 %license LICENSE
 
 
