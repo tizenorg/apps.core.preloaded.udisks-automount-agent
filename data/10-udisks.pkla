@@ -1,5 +1,5 @@
 [Normal Staff Permissions]
-Identity=unix-group:app
+Identity=unix-group:users
 Action=org.freedesktop.udisks2.filesystem-mount-other-seat
 ResultAny=yes
 ResultInactive=yes

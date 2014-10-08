@@ -1,4 +1,7 @@
-* Tue Jan 08 2014 Imran Zaman <imran.zaman@intel.com>
+* Wed Oct 08 2014 John L. Whiteman <john.l.whiteman@intel.com> submit/tizen_ivi_release/20140317.182225-1-g0dff2e3
+- Fix TC-50. Changed polkit policy from app to users
+
+* Wed Jan 08 2014 Imran Zaman <imran.zaman@intel.com> None
 - Notifications support and sample listeners
 
 * Tue Jan 07 2014 Imran Zaman <imran.zaman@intel.com>
