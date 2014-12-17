@@ -50,11 +50,11 @@ Requires:   %{name} = %{version}-%{release}
 %prep
 %setup -q
 cp -a %{SOURCE1} .
-cmake . -DCMAKE_INSTALL_PREFIX=%{_prefix} -DSYSTEMD_SERVICE_DIR=%{_unitdir_user} -DENABLE_NOTIF=%{enable_notifications}
 
 
 
 %build
+cmake . -DCMAKE_INSTALL_PREFIX=%{_prefix} -DSYSTEMD_SERVICE_DIR=%{_unitdir_user} -DENABLE_NOTIF=%{enable_notifications}
 make %{?jobs:-j%jobs}
 
 
