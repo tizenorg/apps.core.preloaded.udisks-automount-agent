@@ -41,7 +41,7 @@ Requires:   %{name} = %{version}-%{release}
 
 
 %if %{with ivi}
-%define _target_name weston
+%define _target_name default
 %else
 %define _target_name core-efl
 %endif
