@@ -1,5 +1,6 @@
 #include <Ecore.h>
 #include <notification.h>
+#include <notification_list.h>
 #include <unistd.h>
 
 static void __noti_changed_cb(void *data, notification_type_e type)
